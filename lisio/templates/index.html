@@ -1,12 +1,14 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang='en'>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="animate.css">
+    <link rel="stylesheet" href="{% static "reset.css" %}">
+    <link rel="stylesheet" href="{% static "animate.css" %}">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static "font-awesome/css/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "style.css" %}">
     <title>Maciej Lis</title>
 </head>
 
@@ -39,7 +41,7 @@
     <!-- scripts -->
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <script src="main.js"></script>
+    <script src="{% static "main.js" %}"></script>
 </body>
 </html>
 
