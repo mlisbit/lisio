@@ -35,6 +35,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'projects_app',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -75,11 +76,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
-
-
-
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
@@ -87,6 +83,7 @@ TEMPLATE_LOADERS = (
 
 TEMPLATE_DIRS = (
     BASE_DIR+'/lisio/templates',
+    BASE_DIR+'/projects_app/templates',
 )
 
 STATIC_ROOT = ''

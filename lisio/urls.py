@@ -9,4 +9,5 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', 'lisio.views.home'), 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^projects/', include('projects_app.urls')),
 )
