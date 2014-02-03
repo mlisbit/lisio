@@ -10,6 +10,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import json
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
@@ -17,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'l%8jwszhkhou(5r8wm+4dr8y52lr4-ihkxh*%=75sx2%nx89op'
-
+secrets = json.load(file(BASE_DIR+'/../secrets.json'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -35,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'lisio',
     'projects_app',
 )
 
@@ -95,3 +98,15 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
+
+DATABASES = {
+    'default': {
+        'ENGINE': secrets['DB_ENGINE'], # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': secrets['DB_NAME'],                      # Or path to database file if using sqlite3.
+        # The following settings are not used with sqlite3:
+        'USER': secrets['DB_USER'],
+        'PASSWORD': secrets['DB_PASSWORD'],
+        'HOST': secrets['DB_HOST'],                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': secrets['DB_PORT'],                      # Set to empty string for default.
+    }
+}
