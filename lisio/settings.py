@@ -21,8 +21,9 @@ MEDIA_URL = ''
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'l%8jwszhkhou(5r8wm+4dr8y52lr4-ihkxh*%=75sx2%nx89op'
+
 secrets = json.load(file(BASE_DIR+'/../secrets.json'))
+SECRET_KEY = secrets['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -57,17 +58,16 @@ ROOT_URLCONF = 'lisio.urls'
 
 WSGI_APPLICATION = 'lisio.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': secrets['DB_ENGINE'], 
+        'NAME': secrets['DB_NAME'],
+        'USER': secrets['DB_USER'],
+        'PASSWORD': secrets['DB_PASSWORD'],
+        'HOST': secrets['DB_HOST'],                      
+        'PORT': secrets['DB_PORT'],                      
     }
 }
-
 
 
 # Internationalization
@@ -105,14 +105,5 @@ STATICFILES_FINDERS = (
 )
 
 #database configs
-DATABASES = {
-    'default': {
-        'ENGINE': secrets['DB_ENGINE'], 
-        'NAME': secrets['DB_NAME'],
-        'USER': secrets['DB_USER'],
-        'PASSWORD': secrets['DB_PASSWORD'],
-        'HOST': secrets['DB_HOST'],                      
-        'PORT': secrets['DB_PORT'],                      
-    }
-}
+
 
