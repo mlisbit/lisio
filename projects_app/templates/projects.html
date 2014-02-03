@@ -11,23 +11,51 @@
 
 <body>  
     <div class="container">
-       <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 iso-item">
+        {% for project in projects %}
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 iso-item">
             <div class="thumbnail">
-                <div style="background: #ccc; overflow: hidden;">
-                    <center><img src="/static/{{x.event_img}}" alt="..." style="min-height:50px; height:200px; overflow: hidden;"></center>
+                <div style="background: #E6E6E6; overflow: hidden;">
+                    {% if project.img %}
+                    <center><img src="/static/{{project.img}}" alt="..." style="min-height:50px; height:200px; overflow: hidden;"></center>
+                    {% endif %}
                 </div>
-                <div class="caption">
-                    <h4>Wander Tower Defence</h4>
-                    <p>I always loved tower defence games, so I thought I would make one.</p>
-                    <span class="badge">python</span> <span class="badge">pyQT</span>
+                {% if not project.img %}
+                <div class="caption" style="margin-top: -15px;">
+                {% else %}
+                 <div class="caption">
+                {% endif %}
+                    <h4>{{ project.name }}</h4>
+                    <p>{{ project.description }}</p>
+                    {% for lang in project.languages.all %}
+                        <span class="badge">{{ lang.name }}</span>
+                    {% endfor %}
                 </div>
-                <a href="#" class="btn btn-primary" style="width: 100%">Check it out on github</a> 
+                {% for link in project.links.all %}
+                    {% if link.first %}
+                        <a href="{{ link.location }}" class="btn btn-primary" style="width: 100%">{{ link.label }}</a>
+                    {% else %}
+                        <a href="{{ link.location }}" class="btn btn-primary" style="width: 100%; margin-top: 3px;">{{ link.label }}</a>
+                    {% endif %}
+                {% endfor %}
             </div>
-            
+        </div>
+        {% endfor %}
     <!-- scripts -->
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="main.js"></script>
+
+    <script type="text/javascript" src="http://isotope.metafizzy.co/jquery.isotope.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+      var container = $('.iso');
+      container.imagesLoaded( function(){
+        container.isotope({
+          itemSelector : '.iso-item',
+        });
+      });
+    }); 
+    </script>
 </body>
 </html>
 

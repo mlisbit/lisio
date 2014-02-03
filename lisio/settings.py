@@ -14,6 +14,9 @@ import json
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+MEDIA_ROOT = BASE_DIR+'/static'
+print MEDIA_ROOT
+MEDIA_URL = ''
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -25,7 +28,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -65,6 +68,8 @@ DATABASES = {
     }
 }
 
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -99,14 +104,15 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
+#database configs
 DATABASES = {
     'default': {
-        'ENGINE': secrets['DB_ENGINE'], # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': secrets['DB_NAME'],                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
+        'ENGINE': secrets['DB_ENGINE'], 
+        'NAME': secrets['DB_NAME'],
         'USER': secrets['DB_USER'],
         'PASSWORD': secrets['DB_PASSWORD'],
-        'HOST': secrets['DB_HOST'],                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': secrets['DB_PORT'],                      # Set to empty string for default.
+        'HOST': secrets['DB_HOST'],                      
+        'PORT': secrets['DB_PORT'],                      
     }
 }
+

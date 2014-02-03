@@ -7,7 +7,10 @@ from django.views.generic.base import TemplateView
 from django.core.context_processors import csrf
 from django.template import RequestContext
 
+from models import Project
+
 # Create your views here.
 def home(request):
 	args= {}
+	args['projects'] = Project.objects.all()
 	return render_to_response('projects.html', args, context_instance=RequestContext(request))
