@@ -13,6 +13,8 @@
 </head>
 
 <body>  
+    <div class="continer">
+        <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="animated pulse" id="avatar">
             <img  src="http://www.gravatar.com/avatar/9bba540a87226030db120dc2aba2f60e.png?size=150" alt="my face">
         </div>
@@ -20,8 +22,9 @@
         <div class="col-header">
             <h1>Maciej Lis</h1>
             <div class="statement">
+                <!-- Computer Science Student <a href="https://twitter.com/yorkuniversity">@YorkUniversity</a>. Python lover, and cycling enthusiast. -->
                 <i class="fa fa-quote-left"></i>
-                <p>Computer Science Student <a href="https://twitter.com/yorkuniversity">@YorkUniversity</a>. Python lover, and cycling enthusiast.</p>
+                <p>{% autoescape off %} {{statement}} {% endautoescape %}</p>
             </div>
             <a href="https://github.com/mlisbit"><i class="fa fa-github-alt"></i></a>
             <a href="http://www.linkedin.com/pub/maciej-lis/61/769/493"><i class="fa fa-linkedin"></i></a>
@@ -33,11 +36,11 @@
         </div>
         <div class="col-experience">
             <a href="/projects"><h4>projects</h4></a>
-            <a href=""><h4>rèsumè</h4></a>
-            <a href=""><h4>blog</h4></a>
-            <a href=""><h4>more about me</h4></a>
+            <a href="/resume"><h4>rèsumè</h4></a>
+            <!-- <a href=""><h4>blog</h4></a> -->
         </div>
-
+    </div> <!--  -->
+    </div>
     <!-- scripts -->
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>

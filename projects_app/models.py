@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 from time import time
 from datetime import datetime
 import django.utils.timezone
@@ -9,6 +8,12 @@ def get_upload_file_name(instance, filename):
 	return "project_images/%s_%s" % (str(time()).replace('.','_'), filename)
 
 class Language(models.Model):
+	name = models.CharField(max_length=200)
+
+	def __unicode__(self):
+		return self.name
+
+class Catagory(models.Model):
 	name = models.CharField(max_length=200)
 
 	def __unicode__(self):
@@ -28,6 +33,7 @@ class Project(models.Model):
 	img = models.FileField(upload_to=get_upload_file_name, blank=True, null=True)
 	languages = models.ManyToManyField(Language, blank=True, null=True)
 	links = models.ManyToManyField(Link, blank=True, null=True)
+	catagories = models.ManyToManyField(Catagory, blank=True, null=True)
 	#determines how close to the top you want this project
 	priority = models.IntegerField(max_length=5, null=True, blank=True)
 
