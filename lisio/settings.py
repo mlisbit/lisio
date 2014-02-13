@@ -1,13 +1,3 @@
-"""
-Django settings for lisio project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.6/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.6/ref/settings/
-"""
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import json
@@ -42,9 +32,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'lisio',
-    'projects_app',
-    'home_app',
-    'resume_app',
+    'projects',
+    'home',
+    'resume',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -93,7 +83,7 @@ TEMPLATE_LOADERS = (
 
 TEMPLATE_DIRS = (
     BASE_DIR+'/lisio/templates',
-    BASE_DIR+'/projects_app/templates',
+    BASE_DIR+'/projects/templates',
 )
 
 STATIC_ROOT = ''

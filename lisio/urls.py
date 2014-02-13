@@ -8,8 +8,8 @@ urlpatterns = patterns('',
     # url(r'^$', 'lisio.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^resume/$', include('resume_app.urls')),
-    url(r'^projects/', include('projects_app.urls')),
+    url(r'^resume/$', include('resume.urls')),
+    url(r'^projects/', include('projects.urls')),
 
-    url(r'^$', include('home_app.urls')),
+    url(r'^$', include('home.urls')),
 )

@@ -1,6 +1,6 @@
 from django.contrib import admin
-from projects_app.models import Project, Link, Language, Catagory
-from home_app.models import Statement
+from projects.models import Project, Link, Language, Catagory
+from home.models import Statement
 
 class ProjectAdmin(admin.ModelAdmin):
 	filter_horizontal = ('languages', 'links')
