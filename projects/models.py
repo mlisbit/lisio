@@ -34,8 +34,8 @@ class Project(models.Model):
 	languages = models.ManyToManyField(Language, blank=True, null=True)
 	links = models.ManyToManyField(Link, blank=True, null=True)
 	catagories = models.ManyToManyField(Catagory, blank=True, null=True)
-	#determines how close to the top you want this project
-	priority = models.IntegerField(max_length=5, null=True, blank=True)
+	#determines how close to the top you want this project, 1 being the top.
+	priority = models.IntegerField(max_length=5, null=True, blank=True, default=100)
 
 	def __unicode__(self):
 		return self.name

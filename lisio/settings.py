@@ -1,4 +1,3 @@
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import json
 
@@ -7,22 +6,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 MEDIA_ROOT = BASE_DIR+'/static'
 print MEDIA_ROOT
 MEDIA_URL = ''
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 
 secrets = json.load(file(BASE_DIR+'/../secrets.json'))
 SECRET_KEY = secrets['SECRET_KEY']
-# SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
-
 TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = ['*']
-
-
-# Application definition
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -61,20 +51,11 @@ DATABASES = {
     }
 }
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -96,6 +77,5 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-#database configs
 
 

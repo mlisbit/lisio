@@ -3,7 +3,7 @@ from projects.models import Project, Link, Language, Catagory
 from home.models import Statement
 
 class ProjectAdmin(admin.ModelAdmin):
-	filter_horizontal = ('languages', 'links')
+	filter_horizontal = ('languages', 'links', 'catagories')
 
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Link)

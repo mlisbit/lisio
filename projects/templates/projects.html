@@ -7,30 +7,26 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static "style.css" %}">
-    <title>Maciej Lis</title>
-    <style type="text/css">
-        .cell {
-            margin-right: -10px;
-        }
-    </style>
+    <title>Maciej Lis - {{subtitle}}</title>
 </head>
 
 <body>  
     <div class="container" style="padding-left: 30px; margin-top: 10px; ">
         <a href="/" class="btn btn-default"><i class="fa fa-home" style="font-size: 20px;"></i>  Home</a>
     </div>
+
     <br>
     <div class="container mason">
         {% for project in projects %}
         <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 cell">
-            <div class="thumbnail">
+            <div class="thumbnail" style="border-color: #BDBDBD;">
                 <div style="background: #E6E6E6; overflow: hidden;">
                     {% if project.img %}
                     <center><img src="/static/{{project.img}}" alt="..." style="min-height:50px; height:200px; overflow: hidden;"></center>
                     {% endif %}
                 </div>
                 {% if not project.img %}
-                <div class="caption" style="margin-top: -15px;">
+                <div class="caption" style="margin-top: -10px;">
                 {% else %}
                  <div class="caption">
                 {% endif %}
@@ -42,9 +38,9 @@
                 </div>
                 {% for link in project.links.all %}
                     {% if link.first %}
-                        <a href="{{ link.location }}" class="btn btn-primary" style="width: 100%">{{ link.label }}</a>
+                        <a href="{{ link.location }}" class="btn btn-custom" style="width: 100%">{{ link.label }}</a>
                     {% else %}
-                        <a href="{{ link.location }}" class="btn btn-primary" style="width: 100%; margin-top: 3px;">{{ link.label }}</a>
+                        <a href="{{ link.location }}" class="btn btn-custom" style="width: 100%; margin-top: 3px;">{{ link.label }}</a>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -56,12 +52,29 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="http://masonry.desandro.com/masonry.pkgd.min.js"></script>
     <script>
+        var border_touch = 756;
+
         var $container = $('.mason');
+
         $container.masonry({
             itemSelector: '.cell',
             columnWidth: '.cell',
             transitionDuration: 0
         });
+
+        //fix right margin of one column view on resize
+        $(window).resize(function(){
+          if (window.innerWidth < border_touch ) {
+            $container.css('marginRight', '30px');
+          } else {
+            $container.css('marginRight', 'auto');
+          }
+        });
+
+        //if initial load as one column, fix the right margin.
+        if (window.innerWidth < border_touch ) {
+            $container.css('marginRight', '30px');
+        }
     </script>
 </body>
 </html>

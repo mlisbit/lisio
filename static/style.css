@@ -69,7 +69,7 @@ html, body {
     color: #04B486;
 }
 
- a i {
+a i {
     text-decoration: none;
     color: #2E2E2E;
 }
@@ -81,4 +81,18 @@ html, body {
 }
 .fa:hover {
     cursor: pointer;
+}
+
+.cell {
+    margin-right: -10px;
+}
+.btn-custom {
+    background: #04B486;
+    border-color: #04B486;
+    color: white;
+}
+.btn-custom:hover {
+    background: #088A68;
+    border-color: #088A68;
+    color: white;
 }

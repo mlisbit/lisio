@@ -12,5 +12,6 @@ from models import Project
 # Create your views here.
 def home(request):
 	args= {}
-	args['projects'] = Project.objects.all()
+	args['projects'] = Project.objects.all().extra(order_by = ['priority'])
+	args['subtitle'] = 'Projects'
 	return render_to_response('projects.html', args, context_instance=RequestContext(request))
