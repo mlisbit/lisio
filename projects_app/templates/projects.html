@@ -3,20 +3,26 @@
 <html lang='en'>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="{% static "style.css" %}">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static "font-awesome/css/font-awesome.min.css" %}">
     <link rel="stylesheet" href="{% static "style.css" %}">
     <title>Maciej Lis</title>
+    <style type="text/css">
+        .cell {
+            margin-right: -10px;
+        }
+    </style>
 </head>
 
 <body>  
     <div class="container" style="padding-left: 30px; margin-top: 10px; margin-bottom: 10px;">
         <a href="/" class="btn btn-default"><i class="fa fa-home" style="font-size: 20px;"></i>  Home</a>
     </div>
-    <div class="container">
+    <div class="container iso">
         {% for project in projects %}
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 iso-item">
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 cell">
             <div class="thumbnail">
                 <div style="background: #E6E6E6; overflow: hidden;">
                     {% if project.img %}
@@ -44,21 +50,24 @@
             </div>
         </div>
         {% endfor %}
+        </div>
     <!-- scripts -->
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <script src="main.js"></script>
-
-    <script type="text/javascript" src="http://isotope.metafizzy.co/jquery.isotope.min.js"></script>
+    
+    <script type="text/javascript" src="http://masonry.desandro.com/masonry.pkgd.min.js"></script>
     <script type="text/javascript">
-    $(document).ready(function() {
-      var container = $('.iso');
-      container.imagesLoaded( function(){
-        container.isotope({
-          itemSelector : '.iso-item',
+    $(document).ready(function () {
+    var $container = $('.container');
+    
+        $container.masonry({
+                itemSelector: '.cell',
+                columnWidth: '.cell',
+                transitionDuration: 0
+            });
         });
-      });
-    }); 
+
+        if 766
     </script>
 </body>
 </html>

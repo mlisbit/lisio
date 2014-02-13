@@ -43,6 +43,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'lisio',
     'projects_app',
+    'home_app',
+    'resume_app',
 )
 
 MIDDLEWARE_CLASSES = (
